@@ -101,7 +101,11 @@ LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
 LOCAL_CLANG := true
 LOCAL_SANITIZE := unsigned-integer-overflow signed-integer-overflow
 
-ifeq ($(MTK_HARDWARE),true)
+ifeq ($(BOARD_USES_MTK_MEDIA_PROFILES), true)
+LOCAL_CFLAGS += -DMTK_MEDIA_PROFILES
+endif
+
+ifeq ($(BOARD_USES_MTK_HARDWARE),true)
 LOCAL_SRC_FILES += \
     mtkaudio_stubs.cpp
 
